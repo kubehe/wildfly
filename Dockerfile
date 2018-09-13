@@ -12,7 +12,7 @@ RUN curl --insecure --junk-session-cookies --location --remote-name --header "Co
     rm jdk-10.0.2_linux-x64_bin.rpm && \
     yum clean all
 
-ENV JAVA_HOME /usr/lib/jvm/java
+ENV JAVA_HOME /usr/java/jdk10.0.2
 
 RUN groupadd -r jboss -g 1000 && useradd -u 1000 -r -g jboss -m -d /opt/jboss -s /sbin/nologin -c "JBoss user" jboss && \
     chmod 755 /opt/jboss
