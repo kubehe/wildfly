@@ -4,7 +4,13 @@ MAINTAINER kubehe <jakub.k.b@hotmail.com>
 
 USER root
 
-RUN yum update -y && yum -y install xmlstarlet saxon augeas bsdtar unzip java-10-openjdk-devel && yum clean all
+RUN yum update -y && yum -y install xmlstarlet saxon augeas bsdtar unzip  && yum clean all
+
+RUN curl --insecure --junk-session-cookies --location --remote-name --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/10.0.2+13/19aef61b38124481863b1413dce1855f/jdk-10.0.2_linux-x64_bin.rpm && \
+    yum install -y -q jdk-10.0.2_linux-x64_bin.rpm && \
+    yum install -y unzip && \
+    rm jdk-10.0.2_linux-x64_bin.rpm && \
+    yum clean all
 
 ENV JAVA_HOME /usr/lib/jvm/java
 
